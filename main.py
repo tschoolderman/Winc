@@ -14,6 +14,7 @@ scorers = f'{scorer_one} {goal_0}, {scorer_two} {goal_1}'
 report = f'{scorer_one} scored in the {goal_0}nd minute\n{scorer_two} scored in the {goal_1}th minute'
 
 player = 'Ronald Koeman'
+
 first_name = player[:player.find(' ')]
 last_name = player[player.find(' '):]
 last_name_len = len(last_name)
