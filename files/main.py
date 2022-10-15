@@ -9,23 +9,26 @@ import zipfile
 
 def main():
     clean_cache()
-    cache_zip("./files/data.zip", "./files/cache")
+    cache_zip(
+        os.path.join(os.getcwd(), "files", "data.zip"),
+        os.path.join(os.getcwd(), "files", "cache"),
+    )
     cached_files()
     print(find_password(cached_files()))
 
 
 def clean_cache():
-    if not os.path.exists("./files/cache"):
-        os.mkdir("./files/cache")
+    if not os.path.exists(os.path.join(os.getcwd(), "files", "cache")):
+        os.mkdir(os.path.join(os.getcwd(), "files", "cache"))
         print("Created the cache folder")
     else:
-        shutil.rmtree("./files/cache", ignore_errors=False)
-        os.mkdir("./files/cache")
+        shutil.rmtree(os.path.join(os.getcwd(), "files", "cache"), ignore_errors=False)
+        os.mkdir(os.path.join(os.getcwd(), "files", "cache"))
         print("Cleared the cache folder")
     return
 
 
-def cache_zip(zip_file_path: str, cache_dir_path: str):
+def cache_zip(zip_file_path, cache_dir_path):
     with zipfile.ZipFile(zip_file_path) as zip_ref:
         zip_ref.extractall(cache_dir_path)
         print("Unpacked zip file")
@@ -33,7 +36,7 @@ def cache_zip(zip_file_path: str, cache_dir_path: str):
 
 
 def cached_files():
-    path = os.path.abspath("./files/cache")
+    path = os.path.abspath(os.path.join(os.getcwd(), "files", "cache"))
     cached_list = []
     for file in os.listdir(path):
         cached_list.append(os.path.join(path, file))
