@@ -24,8 +24,10 @@ Table of Contents
 
 ## General info
 ---
-To use this application, please make sure you are in the right directory before issueing commands.
-If needed change directory to `./superpy/`. 
+To use this application, please make sure you are in the right directory before issueing commands.  
+If needed change directory to `./superpy/`.  
+In this guide parts of the code is shown in curly brackets '{}'.  
+Arguments are passed in place of the curly brackets based on user input without the brackets.  
 
 <br/>
 
@@ -40,14 +42,14 @@ When no arguments are given, set the date for the real-time today:
 
 Change the date which is perceived as the current 'today' by adding arguments.  
 The arguments are given as a number. The number indicates the amount of days to increase the current 'today':  
-> $ `python main.py date -a` {days}  
+> $ `python main.py date -a {days}`  
 
 <br/>
 
 ## Buying products  
 ---
 To buy products using the CLI enter the following command:  
-> $ `python main.py buy -p` {product} `-q` {product quantity} `-m` {product buy price} `-e` {date in YYYY-MM-DD}  
+> $ `python main.py buy -p {product} -q {product quantity} -m {product buy price} -e {expiration date in YYYY-MM-DD}`  
 
 After executing this code the product is written to a csv file at the date set for today.
 
@@ -56,7 +58,7 @@ After executing this code the product is written to a csv file at the date set f
 ## Selling products 
 --- 
 To sell products using the CLI enter the following command:  
-> $ `python main.py sell -p` {product} `-q` {product quantity} `-m` {product sell price}  
+> $ `python main.py sell -p {product} -q {product quantity} -m {product sell price}`  
 
 After executing this code the product is written to a csv file at the date set for today.
 
@@ -65,7 +67,7 @@ After executing this code the product is written to a csv file at the date set f
 ## Expring products 
 --- 
 To expire products using the CLI enter the following command:  
-> $ `python main.py expire -p` {product} `-q` {product quantity} `-m` {product buy price}  
+> $ `python main.py expire -p {product} -q {product quantity} -m {product buy price}`  
 
 After executing this code the product is written to a csv file at the date set for today.
 
@@ -92,7 +94,7 @@ This shows a table of all the expired products.
 ## Search inventory 
 --- 
 To search the inventory for a specific product using the CLI enter the following command:  
-> $ `python main.py search -s` {product} 
+> $ `python main.py search -s {product}`  
 
 This shows the current stock of the searched item. 
 
@@ -101,7 +103,7 @@ This shows the current stock of the searched item.
 ## Revenue 
 --- 
 To show the revenue of a certain period using the CLI enter the following command:  
-> $ `python main.py revenue -r` {days} 
+> $ `python main.py revenue -r {days}`  
 
 Set the day to '0' to get the revenue for today.  
 To get the revenue from yesterday until today enter '1'.  
@@ -114,7 +116,7 @@ This shows the revenue by the amount of days in the past specified by the user.
 ## Export to excel 
 --- 
 To export files to an excel format using the CLI enter the following command:  
-> $ `python main.py export -e` {choice}  
+> $ `python main.py export -e {choice}`  
 
 There are 4 choices of files to be exported to excel format: bought, sold, expired or inventory.  
 The chosen file is exported to excel format in the current directory.   
@@ -124,7 +126,7 @@ The chosen file is exported to excel format in the current directory.
 ## Profits 
 --- 
 To view the profits made using the CLI enter the following command:  
-> $ `python main.py profit -p` {days}  
+> $ `python main.py profit -p {days}`  
 
 Set the day to '0' to get the revenue for today.  
 To get the revenue from yesterday until today enter '1'.  
