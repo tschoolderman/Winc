@@ -28,6 +28,15 @@ To use this application, please make sure you are in the right directory before 
 If needed change directory to `./superpy/`.  
 In this guide parts of the code is shown in curly brackets '{}'.  
 Arguments are passed in place of the curly brackets based on user input without the brackets.  
+  
+To use the help function enter the following code in de CLI:  
+> ` python main.py -h`  
+  
+To gain access to a command specific help, use the following code:
+> ` python main.py buy -h`  
+
+To view the help of other commands, replace 'buy' with:  
+sell, expire, inventory, view-expired, search, date, revenue, profit, export or graph.
 
 <br/>
 
