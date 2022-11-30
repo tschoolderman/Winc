@@ -102,9 +102,12 @@ def changing_date(a):
         expired_df["expiration_date"] < new_today
     )
     expired_df = expired_df.loc[mask]
-    print(f'\n{tabulate(expired_df,headers=COLUMNS_BOUGHT,tablefmt="fancy_outline",)}')
-
-    return f"\nThe date has been set to {get_date()}. Please review the products and manually expire, if necessary.\n"
+    expired_table = tabulate(
+        expired_df,
+        headers=COLUMNS_BOUGHT,
+        tablefmt="fancy_outline",
+    )
+    return f"\n{expired_table}\nThe date has been set to {get_date()}. Review the products and expire, if necessary.\n"
 
 
 def buying(buy):
@@ -239,15 +242,11 @@ def selling(sell):
                                 id2
                             )  # Append the dict to the front of sell_row.
                             sold_writer.writerow(sell_row)
-                            print(
-                                f"\n{get_date()} >> Sold {sell.product}({sell.quantity}).\n"
-                            )
+                            return f"\n{get_date()} >> Sold {sell.product}({sell.quantity}).\n"
                     else:
-                        print(
-                            f"{view_inventory()}\nNot enough in stock! Check the stock and try again.\n"
-                        )
+                        return f"{view_inventory()}\nNot enough in stock! Check the stock and try again.\n"
         else:
-            print("\nSorry. This product is not available in this store.\n")
+            return "\nSorry. This product is not available in this store.\n"
 
 
 def expired(expired):
@@ -310,15 +309,11 @@ def expired(expired):
                                 id2
                             )  # Append the dict to the front of sell_row.
                             sold_writer.writerow(expired_row)
-                            print(
-                                f"\n{get_date()} >> The {expired.product}({expired.quantity}) has expired.\n"
-                            )
+                            return f"\n{get_date()} >> The {expired.product}({expired.quantity}) has expired.\n"
                     else:
-                        print(
-                            f"{view_inventory()}\nNot enough in stock to expire! Check the stock and try again.\n"
-                        )
+                        return f"{view_inventory()}\nNot enough in stock to expire! Check the stock and try again.\n"
         else:
-            print("\nWe do not have this product.\n")
+            return "\nWe do not have this product.\n"
 
 
 def view_inventory():
@@ -509,7 +504,7 @@ if __name__ == "__main__":
     if args.menu == "buy":
         print(buying(args))
     elif args.menu == "sell":
-        selling(args)
+        print(selling(args))
     elif args.menu == "expire":
         expired(args)
     elif args.menu == "inventory":
